@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+
+{% block title %}
+Обновление данных пользователя
+{% endblock %}
+
+{% block body %}
+               <div id = "cent" class="container d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+	<div class="card w-100" style="max-width: 400px;">
+		<div class="card-body">
+    <h5 style="font-family: Verdana">Обновление данных пользователя</h5>
+    <form method="post">
+        <input type="text" name="login" id="login" class="form-control" value="{{ user.login }}" placeholder="Логин"><br>
+        <input type="text" name="password" id="password" class="form-control" placeholder="Введите новый пароль"><br>
+                        <div class="mb-3">
+    <h5 style="font-family: Verdana">Роль</h5>
+        <select name="role" id="role" class="form-select custom-select">
+						<option value="user" title="Пользователь">Пользователь</option>
+                        <option value="manager" title="Менеджер">Менеджер</option>
+                        <option value="admin" title="Администратор">Администратор</option>
+					</select>
+                            </div>
+        <div style="flex-flow:column; display:flex">
+        <div class="buttons">
+            {% if error %}
+            <p class="fail">{{ error }}</p>
+        {% endif %}
+            <input type="submit" class="btn btn-success" id="but2" value="Сохранить"><br>
+        </div>
+            </div>
+    </form>
+                    </div>
+    </div>
+    </div>
+{% endblock %}

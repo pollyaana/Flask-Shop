@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+
+{% block title %}
+Обновление данных о категории
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h2 style="font-family: Verdana">Изменение категории</h2>
+    <form method="post">
+        <input type="text" name="name" id="name" class="form-control" value="{{ category.name }}" placeholder="Наименование категории"><br>
+        <input type="submit" class="btn btn-success" value="Изменить"><br>
+    </form>
+</div>
+{% endblock %}

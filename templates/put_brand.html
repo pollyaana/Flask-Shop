@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+
+{% block title %}
+Редактирование бренда
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h2 style="font-family: Verdana">Редактирование бренда</h2>
+    <form method="post">
+        <input type="text" name="name" id="name" value="{{ brand.name }}" placeholder="Наименование бренда"><br>
+        <input type="submit" class="btn btn-success" value="Изменить"><br>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+
+{% block title %}
+Обновление данных о продукте
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+  <h2 style="font-family: Verdana">Редактирование продукта</h2>
+    <form method="post">
+        <input type="text" name="name" id="name" class="form-control" value="{{ product.name }}" placeholder="Название товара"><br>
+        <select name="category" id="category" class="form-control">
+            {% for category in categories %}
+                {% if category.category_id == product.category %}
+                    <option value="{{ category.category_id }}" selected>{{ category.name }}</option>
+                {% else %}
+                    <option value="{{ category.category_id }}">{{ category.name }}</option>
+                {% endif %}
+            {% endfor %}
+        </select><br>
+        <select name="brand" id="brand" class="form-control">
+            {% for brand in brands %}
+                {% if brand.brand_id == product.brand %}
+                    <option value="{{ brand.brand_id }}" selected>{{ brand.name }}</option>
+                {% else %}
+                    <option value="{{ brand.brand_id }}">{{ brand.name }}</option>
+                {% endif %}
+            {% endfor %}
+        </select><br>
+        <div style="flex-flow:column; display:flex">
+        <div class="del_imgs" >
+        {% for picture in product.images %}
+            <div class="del_img">
+                <img src="{{ url_for('static', filename='images/' + picture.image_name) }}" alt="Product Image" style="max-width: 200px;">
+                <a href="/posts/{{ product.product_id }}/upd/{{ picture.image_id }}/del" class="btn btn-danger">Удалить</a>
+            </div>
+        {% endfor %}
+        </div>
+        <div class="buttons">
+            <a href="{{ url_for('add_new_pictures', id=product.product_id) }}" class="btn btn-success">Добавить картинки</a>
+            <input type="submit" class="btn btn-success" id="but2" value="Сохранить"><br>
+        </div>
+            </div>
+    </form>
+</div>
+{% endblock %}

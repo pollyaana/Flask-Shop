@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+
+{% block title %}
+Список брендов
+{% endblock %}
+
+{% block body %}
+<h2 style="font-family: Verdana">Бренды</h2>
+<div class="container mt-5">
+    {% if brands.items|length > 0 %}
+        {% for el in brands.items %}
+                 <div class="brands_info d-flex justify-content-between align-items-center">
+                    <div>
+                        <h3>{{ el.name }}</h3>
+                        <p></p>
+                    </div>
+                       {% if session['role']  == 'admin' or session['role']  == 'manager' %}
+                    <div class="btns">
+                        <a href="/brands/{{ el.brand_id }}/put" class="btn btn-success me-2">Изменить</a>
+                        <a href="/brands/{{ el.brand_id }}/delete" class="btn btn-danger">Удалить</a>
+                    </div>
+                     {% endif %}
+                </div>
+        {% endfor %}
+    {% else %}
+    <p>В магазине нет брендов</p>
+    {% endif %}
+</div>
+
+<div class="pagination-centered">
+    {{ pagination.links }}
+</div>
+{% endblock %}

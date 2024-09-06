@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+
+{% block title %}
+Добавление новых изображений
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+   <h2 style="font-family: Verdana">Добавление новых изображений</h2>
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="image" class="form-control" multiple><br>
+        <input type="submit" class="btn btn-success" value="Сохранить"><br>
+    </form>
+</div>
+{% endblock %}

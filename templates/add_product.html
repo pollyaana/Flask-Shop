@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+
+{% block title %}
+Добавление товара
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+ <h3 style="font-family: Verdana">Добавление продукта</h3>
+    <form method="post" enctype="multipart/form-data">
+        <input type="text" name="name" id="name" class="form-control" placeholder="Наименование продукта"><br>
+        <select name="category" id="category" class="form-control">
+             <option value="" disabled selected>Выберите категорию</option>
+            {% for category in categories %}
+                <option value="{{ category.category_id }}">{{ category.name }}</option>
+            {% endfor %}
+        </select><br>
+        <select name="brand" id="brand" class="form-control" >
+             <option value="" disabled selected>Выберите бренд</option>
+            {% for brand in brands %}
+                <option value="{{ brand.brand_id }}">{{ brand.name }}</option>
+            {% endfor %}
+        </select><br>
+        <input type="file" name="image[]" class="form-control" multiple><br>
+        <input type="submit" class="btn btn-success" value="Сохранить"><br>
+    </form>
+</div>
+{% endblock %}
